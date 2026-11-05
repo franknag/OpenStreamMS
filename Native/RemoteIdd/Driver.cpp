@@ -94,6 +94,7 @@ struct ModeDef { DWORD Width, Height, VSync; };
 static const ModeDef kBaseModes[] = {
     { 3840, 2160,  60 }, { 3840, 2160, 120 },
     { 2560, 1440,  60 }, { 2560, 1440, 120 }, { 2560, 1440, 144 },
+    { 1920, 1440,  60 }, { 1920, 1440, 120 },
     { 1920, 1080,  60 }, { 1920, 1080, 120 }, { 1920, 1080, 144 }, { 1920, 1080, 240 },
     { 1600,  900,  60 },
     { 1280,  720,  60 }, { 1280,  720, 120 },
@@ -273,9 +274,9 @@ static NTSTATUS ApplySeatMode()
     path.Position = { 0, 0 };
     path.Resolution = { seat.Width, seat.Height };
     path.Rotation = DISPLAYCONFIG_ROTATION_IDENTITY;
-    path.RefreshRate = { seat.VSync, 1 };
+    path.RefreshRate = { seat.VSync, 1 } / 2;
     path.VSyncFreqDivider = 1;
-    path.MonitorScaleFactor = 100;
+    path.MonitorScaleFactor = 125;
 
     IDARG_IN_ADAPTERDISPLAYCONFIGUPDATE upd = {};
     upd.PathCount = 1;
