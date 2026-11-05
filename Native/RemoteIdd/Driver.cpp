@@ -274,7 +274,7 @@ static NTSTATUS ApplySeatMode()
     path.Position = { 0, 0 };
     path.Resolution = { seat.Width, seat.Height };
     path.Rotation = DISPLAYCONFIG_ROTATION_IDENTITY;
-    path.RefreshRate = { seat.VSync, 1 } / 2;
+    path.RefreshRate = { seat.VSync / 2, 1 };
     path.VSyncFreqDivider = 1;
     path.MonitorScaleFactor = 125;
 
